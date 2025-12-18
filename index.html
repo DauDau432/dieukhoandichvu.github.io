@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điều khoản sử dụng dịch vụ | H2cloud.vn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79b8ff;
+            --border: #30363d;
+            --success: #3fb950;
+            --warning: #d29922;
+            --danger: #f85149;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        .container { display: flex; min-height: 100vh; }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 20px 0;
+            z-index: 100;
+        }
+        .sidebar::-webkit-scrollbar { width: 6px; }
+        .sidebar::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        
+        .logo {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 15px;
+        }
+        .logo h2 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .logo span { color: var(--text-secondary); font-size: 0.85rem; }
+        
+        .nav-section { padding: 10px 15px; }
+        .nav-section-title {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        .nav-link {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            margin-bottom: 2px;
+        }
+        .nav-link:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        .nav-link.active {
+            background: rgba(88, 166, 255, 0.15);
+            color: var(--accent);
+        }
+        .nav-link .chapter-num {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .nav-link:hover .chapter-num { background: var(--border); }
+        .nav-link.active .chapter-num { background: var(--accent); color: var(--bg-primary); }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px 60px;
+            max-width: 900px;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent), #a371f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .intro {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        .update-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-tertiary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 15px;
+        }
+        .update-badge::before {
+            content: "📅";
+        }
+        
+        /* Chapter Sections */
+        .chapter {
+            margin-bottom: 50px;
+            scroll-margin-top: 30px;
+        }
+        .chapter-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+        }
+        .chapter-number {
+            background: linear-gradient(135deg, var(--accent), #a371f7);
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .chapter-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .article { margin-bottom: 25px; }
+        .article-title {
+            color: var(--accent);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .article-title::before {
+            content: "§";
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+        }
+        
+        .sub-article {
+            margin: 15px 0 15px 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--border);
+        }
+        .sub-article-title {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        p { margin-bottom: 12px; color: var(--text-secondary); }
+        .italic { font-style: italic; }
+        .bold { font-weight: 600; }
+        
+        ul {
+            margin: 12px 0 12px 25px;
+            color: var(--text-secondary);
+        }
+        li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        li::marker { color: var(--accent); }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover { color: var(--accent-hover); text-decoration: underline; }
+        
+        .warning-box {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid rgba(248, 81, 73, 0.3);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        .warning-box p { color: var(--danger); margin: 0; }
+        
+        .info-box {
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        .info-box p { color: var(--accent); margin: 0; }
+        
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        .footer a { color: var(--accent); }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-content { padding: 30px 40px; }
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .sidebar.active { transform: translateX(0); }
+            .main-content { margin-left: 0; padding: 20px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .header h1 { font-size: 1.6rem; }
+            .chapter-title { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+            <h2>H2cloud.vn</h2>
+            <span>Điều khoản sử dụng dịch vụ</span>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Mục lục</div>
+            <a href="#chapter-1" class="nav-link"><span class="chapter-num">I</span>Điều khoản chung</a>
+            <a href="#chapter-2" class="nav-link"><span class="chapter-num">II</span>Hosting & Cloud</a>
+            <a href="#chapter-3" class="nav-link"><span class="chapter-num">III</span>Tên miền</a>
+            <a href="#chapter-4" class="nav-link"><span class="chapter-num">IV</span>Thanh toán</a>
+            <a href="#chapter-5" class="nav-link"><span class="chapter-num">V</span>Bảo mật tài khoản</a>
+            <a href="#chapter-6" class="nav-link"><span class="chapter-num">VI</span>Quyền riêng tư</a>
+            <a href="#chapter-7" class="nav-link"><span class="chapter-num">VII</span>Bảo trì hệ thống</a>
+            <a href="#chapter-8" class="nav-link"><span class="chapter-num">VIII</span>Ngừng dịch vụ</a>
+            <a href="#chapter-9" class="nav-link"><span class="chapter-num">IX</span>SLA</a>
+            <a href="#chapter-10" class="nav-link"><span class="chapter-num">X</span>Đổi trả hàng</a>
+            <a href="#chapter-11" class="nav-link"><span class="chapter-num">XI</span>Giới hạn trách nhiệm</a>
+            <a href="#chapter-12" class="nav-link"><span class="chapter-num">XII</span>Bất khả kháng</a>
+            <a href="#chapter-13" class="nav-link"><span class="chapter-num">XIII</span>Thông báo</a>
+            <a href="#chapter-14" class="nav-link"><span class="chapter-num">XIV</span>Giải quyết tranh chấp</a>
+            <a href="#chapter-15" class="nav-link"><span class="chapter-num">XV</span>Hiệu lực</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="header">
+            <h1>Thỏa thuận sử dụng dịch vụ H2cloud.vn</h1>
+            <p class="intro">Cảm ơn Bạn đã tin tưởng H2cloud.vn. Vui lòng đọc kỹ Thỏa thuận dưới đây trước khi bắt đầu sử dụng dịch vụ.</p>
+            <div class="update-badge">Cập nhật: 18/12/2025</div>
+        </header>
+
+        <!-- Chapter I -->
+        <section class="chapter" id="chapter-1">
+            <div class="chapter-header">
+                <div class="chapter-number">I</div>
+                <h2 class="chapter-title">Điều khoản chung</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Phạm vi áp dụng</h3>
+                <p>Quy định này được áp dụng cho tất cả các vấn đề liên quan đến việc đăng ký, sử dụng dịch vụ có trên hoặc bắt đầu từ trang H2cloud.vn giữa bên sử dụng dịch vụ và bên cung cấp dịch vụ là Chủ sở hữu H2cloud.vn (Nguyễn Văn Hoàng).</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Giải thích từ ngữ</h3>
+                <p><strong>"H2cloud"</strong> hoặc <strong>"H2cloud.vn"</strong> là Chủ sở hữu H2cloud.vn (Nguyễn Văn Hoàng).</p>
+                <p><strong>"Chúng tôi"</strong> là Chủ sở hữu H2cloud.vn (Nguyễn Văn Hoàng).</p>
+                <p><strong>"Bên sử dụng dịch vụ"</strong> là các cơ quan, tổ chức và các cá nhân đã chấp nhận những quy định này và đăng ký sử dụng dịch vụ theo đúng thủ tục mà H2cloud.vn quy định.</p>
+                <p><strong>"Bạn" "Chủ thể"</strong> là các cơ quan, tổ chức và các cá nhân đã chấp nhận những quy định này và đăng ký sử dụng dịch vụ theo đúng thủ tục mà H2cloud.vn quy định.</p>
+                <p><strong>"Dịch vụ"</strong> là tất cả các dịch vụ, tiện ích mà H2cloud.vn cung cấp trên hoặc bắt đầu từ trang <a href="https://h2cloud.vn">H2cloud.vn</a></p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Cập nhật, bổ sung</h3>
+                <p>Căn cứ vào thực tiễn hoạt động kinh doanh và các quy định của pháp luật, H2cloud.vn bảo lưu quyền chỉnh sửa, cập nhật hoặc loại bỏ các điều khoản trong Thỏa thuận này mà không nhất thiết phải thông báo trực tiếp cho bạn, nhưng sẽ đăng công khai trên website của H2cloud.vn, trong đó có ghi chú ngày cập nhật.</p>
+            </div>
+        </section>
+
+        <!-- Chapter II -->
+        <section class="chapter" id="chapter-2">
+            <div class="chapter-header">
+                <div class="chapter-number">II</div>
+                <h2 class="chapter-title">Dịch vụ Hosting, Email, Cloud VPS, Cloud Server, Website</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Trách nhiệm về thông tin lưu trữ</h3>
+                <p>Bên sử dụng dịch vụ tự chịu trách nhiệm hoàn toàn về nội dung thông tin, dữ liệu lưu trữ trên máy chủ của H2cloud.vn. Giải quyết tranh chấp tên miền Quốc tế theo quy định của ICANN chi tiết tại: Domain Name Dispute Resolution Policies - ICANN.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Trách nhiệm về tính toàn vẹn của thông tin lưu trữ</h3>
+                <p>Chúng tôi hoàn toàn được miễn trừ trách nhiệm với tính toàn vẹn của dữ liệu thông tin lưu trữ trên máy chủ.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Đảm bảo an toàn hệ thống</h3>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">3.1. Chính sách "không giới hạn"</h4>
+                    <p>Các gói dịch vụ lưu trữ tại H2cloud.vn được thiết kế nhằm mục đích cung cấp dịch vụ Internet hoạt động tin cậy, ổn định. Việc cung cấp băng thông, dung lượng không giới hạn nhằm mục đích hỗ trợ khách hàng sử dụng dịch vụ tốt nhất. Tuy nhiên, các trường hợp sau được coi là vi phạm:</p>
+                    <ul>
+                        <li>Các trang web sử dụng với mục đích: Lưu trữ, chia sẻ, sao lưu, trình chiếu các tệp tin Media.</li>
+                        <li>Cơ sở dữ liệu (Database) lưu trữ dung lượng lớn hơn 10GB cho mỗi Database được tạo ra.</li>
+                    </ul>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">3.2. Sử dụng tài nguyên hệ thống</h4>
+                    <p>Bên sử dụng dịch vụ không sử dụng các chương trình làm tắc nghẽn hoặc đình trệ ảnh hưởng tới hệ thống, chiếm tài nguyên máy chủ liên tục, sử dụng cronjob vượt tần suất quy định (tối đa 5 cronjob và tối thiểu 5 giây/lần/cronjob trên các Hosting).</p>
+                </div>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 4: Bảo mật thông tin tài khoản</h3>
+                <p>Chủ thể đăng ký sử dụng các dịch vụ lưu trữ có trách nhiệm cung cấp đầy đủ các thông tin: Họ tên/Tên tổ chức, Số điện thoại, Email, Địa chỉ thường trú và hoàn thiện Hợp đồng cung cấp dịch vụ với H2cloud.vn theo đúng quy định.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 5: Chuyển nhượng dịch vụ cho bên thứ 3</h3>
+                <p>Bên sử dụng dịch vụ không được tự ý sang nhượng, cho, tặng, bán lại dịch vụ cho bất cứ bên thứ 3 nào khác khi chưa có thông báo hoặc được sự chấp thuận bởi H2cloud.vn.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 6: Chính sách sử dụng gói dịch vụ dùng thử, gói ưu đãi miễn phí</h3>
+                <p>Khách hàng có thể dùng thử các dịch vụ trước khi chính thức quyết định mua gói dịch vụ. H2cloud.vn không chấp nhận đền bù bất kỳ thiệt hại nào liên quan đến việc sử dụng gói dùng thử.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 7: Quy định về An ninh mạng và các hành vi bị cấm</h3>
+                <div class="warning-box">
+                    <p><strong>⚠️ Nghiêm cấm:</strong> Botnet, tấn công mạng, quét hệ thống, DDoS, phát tán malware</p>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">7.1. Nghiêm cấm hoạt động botnet, tấn công mạng</h4>
+                    <ul>
+                        <li>Thiết lập, điều khiển, tham gia hoặc trung chuyển mạng botnet</li>
+                        <li>Thực hiện quét mạng, quét cổng, dò quét dịch vụ (network scan, port scan)</li>
+                        <li>Sử dụng các công cụ như zmap, masscan, nmap</li>
+                        <li>Tạo hoặc phát tán lưu lượng tấn công DDoS, DRDoS</li>
+                        <li>Phát tán mã độc, malware, trojan, ransomware</li>
+                    </ul>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">7.2. Nghiêm cấm tấn công dò mật khẩu</h4>
+                    <ul>
+                        <li>Bruteforce, password attack, credential stuffing</li>
+                        <li>Khai thác lỗ hổng bảo mật khi chưa được phép</li>
+                    </ul>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">7.3. Nghiêm cấm spam</h4>
+                    <ul>
+                        <li>Spam email, SMTP relay, mail bombing</li>
+                        <li>Spam tin nhắn, spam API, spam OTP</li>
+                        <li>Vận hành bot spam trên mạng xã hội</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 8: Tuân thủ Quy định về nội dung lưu trữ</h3>
+                <div class="warning-box">
+                    <p><strong>⚠️ Nghiêm cấm:</strong> Nội dung vi phạm pháp luật, lừa đảo, khiêu dâm, chống phá nhà nước</p>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">8.1. Nghiêm cấm Phishing, Fakebill, lừa đảo trực tuyến</h4>
+                    <ul>
+                        <li>Trang web giả mạo ngân hàng, ví điện tử (Phishing)</li>
+                        <li>Trang web tạo hóa đơn giả, bill giả (Fakebill)</li>
+                        <li>Trang web giả mạo thương hiệu để lừa đảo (Scam website)</li>
+                        <li>Dịch vụ spam SMS, spam OTP, spam cuộc gọi</li>
+                    </ul>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">8.2. Nghiêm cấm Torrent, P2P</h4>
+                    <ul>
+                        <li>Vận hành các dịch vụ BitTorrent, P2P sharing</li>
+                        <li>Lưu trữ, phân phối nội dung vi phạm bản quyền</li>
+                    </ul>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">8.3. Quy định về nội dung người lớn</h4>
+                    <ul>
+                        <li>Hình ảnh, video có nội dung khiêu dâm</li>
+                        <li>Nội dung liên quan đến trẻ em (nghiêm cấm tuyệt đối)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 9: Tuân thủ quy định về bản quyền</h3>
+                <p>Bên sử dụng dịch vụ không được lưu trữ, truyền tải các thông tin, dữ liệu vi phạm bằng sáng chế, thương hiệu đã được đăng ký bảo vệ, bản quyền và quyền sở hữu trí tuệ khác.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 10: Quy định sử dụng dịch vụ email</h3>
+                <p>Bên sử dụng dịch vụ tự chịu trách nhiệm về nội dung các email được gửi đi, không sử dụng để gửi SPAM, thư QUẢNG CÁO, BULK MAIL, MASS MAIL.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 11: Quy định về sử dụng địa chỉ IP</h3>
+                <ul>
+                    <li>Sử dụng địa chỉ IP được cấp đúng mục đích</li>
+                    <li>Không sử dụng IP để gửi spam, tấn công mạng</li>
+                    <li>Thông báo ngay khi phát hiện IP bị lạm dụng hoặc bị blacklist</li>
+                </ul>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 12: Sao lưu dữ liệu</h3>
+                <ul>
+                    <li><strong>Hosting:</strong> Sao lưu 01 tuần/1 lần</li>
+                    <li><strong>Email:</strong> Sao lưu 02 tuần/1 lần</li>
+                    <li><strong>Cloud VPS/Server:</strong> Bên sử dụng tự thực hiện sao lưu</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Chapter III -->
+        <section class="chapter" id="chapter-3">
+            <div class="chapter-header">
+                <div class="chapter-number">III</div>
+                <h2 class="chapter-title">Dịch vụ Tên miền</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Đăng ký tên miền</h3>
+                <p>Bên sử dụng dịch vụ tự chịu trách nhiệm về việc lựa chọn tên miền đăng ký. H2cloud.vn chỉ đăng ký các tên miền còn đang tự do.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Thông tin đăng ký tên miền</h3>
+                <p>Bên sử dụng dịch vụ có trách nhiệm cung cấp thông tin chính xác, đầy đủ khi đăng ký tên miền theo quy định của VNNIC (tên miền Việt Nam) và ICANN (tên miền Quốc tế).</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Gia hạn tên miền</h3>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">3.1. Tên miền Việt Nam</h4>
+                    <p>Theo quy định của VNNIC, hạn chót gia hạn là ngày thứ 30 kể từ khi tên miền hết hạn.</p>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">3.2. Tên miền Quốc tế</h4>
+                    <p>Theo quy định của ICANN, 30 ngày sau ngày hết hạn là thời hạn cuối cùng có thể duy trì tên miền.</p>
+                </div>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 4: Chuyển nhượng tên miền</h3>
+                <p>Việc chuyển nhượng tên miền phải tuân thủ quy định của VNNIC và ICANN.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 5: Giải quyết tranh chấp tên miền</h3>
+                <p>Giải quyết tranh chấp tên miền Việt Nam theo quy định của VNNIC. Giải quyết tranh chấp tên miền Quốc tế theo quy định của ICANN.</p>
+            </div>
+        </section>
+
+        <!-- Chapter IV -->
+        <section class="chapter" id="chapter-4">
+            <div class="chapter-header">
+                <div class="chapter-number">IV</div>
+                <h2 class="chapter-title">Điều khoản thanh toán</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Thời hạn thanh toán</h3>
+                <p>Bên sử dụng dịch vụ có trách nhiệm thanh toán đầy đủ và đúng hạn, đúng hợp đồng các khoản phải trả.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Hiệu lực chờ thanh toán</h3>
+                <p>Hiệu lực chờ thanh toán có giá trị trong vòng <strong>24 giờ</strong>. Quá thời hạn trên, việc đăng ký sử dụng dịch vụ sẽ không còn hiệu lực.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Hiệu lực gia hạn</h3>
+                <p>Chủ thể có thể gia hạn và kích hoạt lại dịch vụ trong <strong>30 ngày</strong> từ khi hết hạn.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 4: Trách nhiệm liên đới</h3>
+                <p>H2cloud.vn được miễn trừ trách nhiệm về mọi tổn thất hoặc thiệt hại phát sinh do việc thanh toán chậm gây ra.</p>
+            </div>
+        </section>
+
+        <!-- Chapter V -->
+        <section class="chapter" id="chapter-5">
+            <div class="chapter-header">
+                <div class="chapter-number">V</div>
+                <h2 class="chapter-title">Bảo mật tài khoản</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Trách nhiệm bảo vệ thông tin người dùng</h3>
+                <p>Bên sử dụng dịch vụ tự chịu trách nhiệm về quản lý tên đăng nhập, mật khẩu, bảo quản mật khẩu và các thông tin liên quan đến dịch vụ đã đăng ký.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Trách nhiệm liên đới của nhà cung cấp</h3>
+                <p>H2cloud.vn được miễn trừ trách nhiệm cho mọi tổn thất hoặc thiệt hại phát sinh do bên sử dụng dịch vụ làm lộ thông tin quản lý.</p>
+            </div>
+        </section>
+
+        <!-- Chapter VI -->
+        <section class="chapter" id="chapter-6">
+            <div class="chapter-header">
+                <div class="chapter-number">VI</div>
+                <h2 class="chapter-title">Chính sách quyền riêng tư</h2>
+            </div>
+            
+            <div class="info-box">
+                <p>H2cloud.vn luôn tôn trọng sự riêng tư của khách hàng và cam kết bảo vệ những thông tin cá nhân của khách hàng.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Thông tin đăng nhập</h3>
+                <p>Bạn được sử dụng trang web mà không cần cung cấp bất kỳ thông tin cá nhân nào. Tuy nhiên, trong một số trường hợp liên quan đến việc đăng ký dịch vụ, H2cloud.vn có thể yêu cầu bạn cung cấp thông tin cá nhân.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Thông tin cá nhân do bạn cung cấp</h3>
+                <p>Khi bạn cung cấp các thông tin cần thiết, H2cloud.vn sẽ sử dụng chúng để đáp ứng yêu cầu của bạn. H2cloud.vn cam kết bảo vệ sự riêng tư của bạn, không mua bán thông tin cá nhân của bạn với bên thứ ba.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Cung cấp thông tin cho bên thứ ba</h3>
+                <p>H2cloud.vn có thể sử dụng một số đơn vị khác để cung cấp sản phẩm hay dịch vụ cho bạn, và phải tuân thủ các quy định bảo vệ quyền riêng tư.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 4: Ghi nhận thông tin trình duyệt (Cookies)</h3>
+                <p>Trong quá trình sử dụng dịch vụ, một số thông tin được lưu trên máy tính của bạn dưới dạng "cookies" để giúp H2cloud.vn cải thiện chất lượng dịch vụ.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 5: Bảo mật thông tin cá nhân</h3>
+                <p>H2cloud.vn thiết lập các cơ chế an ninh nhằm ngăn chặn hành vi truy cập bất hợp pháp vào các thông tin cá nhân, bao gồm SSL (Secure Sockets Layer).</p>
+            </div>
+        </section>
+
+        <!-- Chapter VII -->
+        <section class="chapter" id="chapter-7">
+            <div class="chapter-header">
+                <div class="chapter-number">VII</div>
+                <h2 class="chapter-title">Bảo trì hệ thống</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Bảo trì định kỳ</h3>
+                <p>H2cloud.vn có quyền thực hiện bảo trì hệ thống định kỳ để đảm bảo chất lượng dịch vụ. Việc bảo trì định kỳ sẽ được thông báo trước ít nhất <strong>24 giờ</strong>.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Bảo trì khẩn cấp</h3>
+                <p>Trong trường hợp khẩn cấp liên quan đến an ninh hệ thống, H2cloud.vn có quyền thực hiện bảo trì mà không cần thông báo trước.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Thời gian bảo trì</h3>
+                <p>H2cloud.vn cam kết giảm thiểu thời gian bảo trì. Thời gian bảo trì không được tính vào thời gian downtime theo cam kết SLA.</p>
+            </div>
+        </section>
+
+        <!-- Chapter VIII -->
+        <section class="chapter" id="chapter-8">
+            <div class="chapter-header">
+                <div class="chapter-number">VIII</div>
+                <h2 class="chapter-title">Ngừng, hủy bỏ việc cung cấp dịch vụ</h2>
+            </div>
+            
+            <div class="warning-box">
+                <p>Trong trường hợp Bên sử dụng dịch vụ vi phạm Thỏa thuận này, H2cloud.vn có quyền đơn phương dừng cung cấp dịch vụ hoặc đơn phương chấm dứt hợp đồng đã ký kết mà không cần thông báo trước, không hoàn phí dịch vụ chưa sử dụng.</p>
+            </div>
+        </section>
+
+        <!-- Chapter IX -->
+        <section class="chapter" id="chapter-9">
+            <div class="chapter-header">
+                <div class="chapter-number">IX</div>
+                <h2 class="chapter-title">Cam kết chất lượng dịch vụ (SLA)</h2>
+            </div>
+            
+            <div class="info-box">
+                <p>H2cloud.vn cam kết thời gian hoạt động hàng tháng của dịch vụ theo tài liệu: <a href="https://h2cloud.vn/bieu-mau-ho-so/other/SLA.pdf">Xem chi tiết SLA</a></p>
+            </div>
+        </section>
+
+        <!-- Chapter X -->
+        <section class="chapter" id="chapter-10">
+            <div class="chapter-header">
+                <div class="chapter-number">X</div>
+                <h2 class="chapter-title">Chính sách đổi trả hàng</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Đổi dịch vụ</h3>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">1.1. Dịch vụ tên miền</h4>
+                    <p>Tên miền đã đăng ký hoặc gia hạn <strong>không được đổi trả hay hoàn lại tiền</strong>.</p>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">1.2. Các dịch vụ khác</h4>
+                    <p>Dịch vụ đã đăng ký hoặc gia hạn <strong>không được đổi trả hay hoàn lại tiền</strong>.</p>
+                </div>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Trả dịch vụ</h3>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">2.1. Đối với dịch vụ đã kích hoạt</h4>
+                    <p>Theo quy định hoàn tiền của H2cloud.vn nhưng không quá <strong>7 ngày</strong> kể từ ngày đăng ký. <a href="https://h2cloud.vn/bieu-mau-ho-so/other/Chinh-sach-doi-tra-hang.pdf">Xem chi tiết</a></p>
+                </div>
+                <div class="sub-article">
+                    <h4 class="sub-article-title">2.2. Đối với đơn hàng chưa xác nhận</h4>
+                    <p>Quý khách có thể hủy đơn hàng trong vòng <strong>24 giờ</strong> sau khi đặt đơn.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter XI -->
+        <section class="chapter" id="chapter-11">
+            <div class="chapter-header">
+                <div class="chapter-number">XI</div>
+                <h2 class="chapter-title">Giới hạn trách nhiệm của nhà cung cấp</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Miễn trừ</h3>
+                <p>H2cloud.vn không chịu trách nhiệm pháp lý và bồi thường đối với bất kỳ tổn thất hoặc thiệt hại nào phát sinh nếu bên sử dụng không tuân thủ Thỏa thuận này.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Giới hạn trách nhiệm pháp lý</h3>
+                <p>Trong bất kỳ trường hợp nào, tổng trách nhiệm pháp lý của nhà cung cấp tối đa bằng <strong>10 lần giá trị gói dịch vụ</strong> nhưng không vượt quá <strong>20.000.000 VNĐ</strong>.</p>
+            </div>
+        </section>
+
+        <!-- Chapter XII -->
+        <section class="chapter" id="chapter-12">
+            <div class="chapter-header">
+                <div class="chapter-number">XII</div>
+                <h2 class="chapter-title">Bất khả kháng</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Định nghĩa sự kiện bất khả kháng</h3>
+                <p>Sự kiện bất khả kháng là sự kiện xảy ra một cách khách quan, không thể lường trước được và không thể khắc phục được, bao gồm:</p>
+                <ul>
+                    <li>Thiên tai: động đất, bão, lũ lụt, sóng thần, dịch bệnh</li>
+                    <li>Chiến tranh, bạo loạn, đình công, khủng bố</li>
+                    <li>Quyết định của cơ quan nhà nước có thẩm quyền</li>
+                    <li>Sự cố về hạ tầng viễn thông quốc gia, quốc tế</li>
+                    <li>Tấn công mạng quy mô lớn vượt quá khả năng phòng thủ</li>
+                </ul>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Miễn trừ trách nhiệm</h3>
+                <p>Trong trường hợp xảy ra sự kiện bất khả kháng, H2cloud.vn được miễn trừ trách nhiệm về việc không thể thực hiện hoặc chậm trễ trong việc thực hiện nghĩa vụ.</p>
+            </div>
+        </section>
+
+        <!-- Chapter XIII -->
+        <section class="chapter" id="chapter-13">
+            <div class="chapter-header">
+                <div class="chapter-number">XIII</div>
+                <h2 class="chapter-title">Thông báo</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Phương thức thông báo</h3>
+                <ul>
+                    <li>Email đăng ký tài khoản</li>
+                    <li>Thông báo trên website H2cloud.vn</li>
+                    <li>Tin nhắn SMS (trong trường hợp khẩn cấp)</li>
+                    <li>Hệ thống quản lý tài khoản khách hàng</li>
+                </ul>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Hiệu lực thông báo</h3>
+                <p>Thông báo được coi là đã gửi thành công khi email/SMS được gửi đến địa chỉ/số điện thoại đăng ký hoặc khi thông báo được đăng tải trên website.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Trách nhiệm cập nhật thông tin</h3>
+                <p>Bên sử dụng dịch vụ có trách nhiệm cập nhật thông tin liên hệ khi có thay đổi. H2cloud.vn không chịu trách nhiệm nếu không nhận được thông báo do thông tin không chính xác.</p>
+            </div>
+        </section>
+
+        <!-- Chapter XIV -->
+        <section class="chapter" id="chapter-14">
+            <div class="chapter-header">
+                <div class="chapter-number">XIV</div>
+                <h2 class="chapter-title">Giải quyết tranh chấp</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Nguyên tắc giải quyết</h3>
+                <p>Mọi tranh chấp sẽ được giải quyết trước tiên thông qua thương lượng, hòa giải giữa các bên trên tinh thần thiện chí và hợp tác.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Thời hạn khiếu nại</h3>
+                <p>Bên sử dụng dịch vụ có quyền khiếu nại trong vòng <strong>30 ngày</strong> kể từ ngày phát sinh sự việc.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Cơ quan giải quyết</h3>
+                <p>Trong trường hợp không thể giải quyết thông qua thương lượng, tranh chấp sẽ được đưa ra Tòa án nhân dân có thẩm quyền tại Việt Nam.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 4: Luật áp dụng</h3>
+                <p>Thỏa thuận này được điều chỉnh và giải thích theo pháp luật nước Cộng hòa Xã hội Chủ nghĩa Việt Nam.</p>
+            </div>
+        </section>
+
+        <!-- Chapter XV -->
+        <section class="chapter" id="chapter-15">
+            <div class="chapter-header">
+                <div class="chapter-number">XV</div>
+                <h2 class="chapter-title">Hiệu lực của Thỏa thuận</h2>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 1: Thời điểm có hiệu lực</h3>
+                <p>Thỏa thuận này có hiệu lực kể từ thời điểm Bên sử dụng dịch vụ đăng ký và sử dụng dịch vụ của H2cloud.vn.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 2: Thời hạn hiệu lực</h3>
+                <p>Thỏa thuận này có hiệu lực trong suốt thời gian Bên sử dụng dịch vụ còn sử dụng dịch vụ của H2cloud.vn.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 3: Chấm dứt hiệu lực</h3>
+                <p>Thỏa thuận này chấm dứt hiệu lực khi:</p>
+                <ul>
+                    <li>Bên sử dụng dịch vụ ngừng sử dụng tất cả dịch vụ của H2cloud.vn</li>
+                    <li>H2cloud.vn đơn phương chấm dứt do vi phạm của Bên sử dụng dịch vụ</li>
+                    <li>Các bên thỏa thuận chấm dứt</li>
+                </ul>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 4: Điều khoản tồn tại</h3>
+                <p>Các điều khoản về bảo mật thông tin, giới hạn trách nhiệm, giải quyết tranh chấp vẫn có hiệu lực sau khi Thỏa thuận này chấm dứt.</p>
+            </div>
+            
+            <div class="article">
+                <h3 class="article-title">Điều 5: Tính độc lập của các điều khoản</h3>
+                <p>Nếu bất kỳ điều khoản nào của Thỏa thuận này bị coi là vô hiệu hoặc không thể thi hành, các điều khoản còn lại vẫn có hiệu lực đầy đủ.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 H2cloud.vn - Tất cả quyền được bảo lưu</p>
+            <p>Liên hệ: <a href="https://h2cloud.vn">h2cloud.vn</a></p>
+        </footer>
+
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+        
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('.chapter');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Close sidebar on mobile when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
